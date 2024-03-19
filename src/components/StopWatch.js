@@ -23,6 +23,7 @@ function StopWatch() {
 
     }
     return () =>{
+      console.log("helooooooooo") //it is clearing all the prvious id's that setInterval is creating
       clearInterval(intervalIdRef.current)
     }
   },[isrunning])
@@ -30,7 +31,7 @@ function StopWatch() {
   function start(){
     setIsRunning(true);
     startTimeRef.current = Date.now() - elapsedTime; //current data and time in ms - current time in stopwatch
-    // console.log(startTimeRef)
+    console.log(startTimeRef,"timee")
   }
 
   function pause(){
