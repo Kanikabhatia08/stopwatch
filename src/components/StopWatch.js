@@ -5,10 +5,10 @@ import { VscDebugRestart } from "react-icons/vsc";
 
 function StopWatch() {
 
-  const [isrunning, setIsRunning] = useState(false);
-  const [elapsedTime, setElapsedTime] = useState(0)
+  const [isrunning, setIsRunning] = useState(false); //track if the state is running or not
+  const [elapsedTime, setElapsedTime] = useState(0); //duration of since the clock started
   const intervalIdRef = useRef(null);
-  const startTimeRef = useRef(0);
+  const startTimeRef = useRef(0); //from where the time has started
 
   //updating of reference doesn't cause our application to render, a state change does
   useEffect(()=>{
@@ -16,6 +16,11 @@ function StopWatch() {
       intervalIdRef.current = setInterval(() =>{
         setElapsedTime(Date.now() - startTimeRef.current)
       },10)
+      console.log(intervalIdRef.current,"interval")
+      console.log(setInterval)
+      // console.log(startTimeRef,"startTime")
+      // console.log(elapsedTime,"elapsed")
+
     }
     return () =>{
       clearInterval(intervalIdRef.current)
@@ -24,7 +29,7 @@ function StopWatch() {
 
   function start(){
     setIsRunning(true);
-    startTimeRef.current = Date.now() - elapsedTime;
+    startTimeRef.current = Date.now() - elapsedTime; //current data and time in ms - current time in stopwatch
     // console.log(startTimeRef)
   }
 
@@ -54,7 +59,7 @@ function StopWatch() {
 
   return (
     <div className='w-[45%] mx-auto justify-center text-center'>
-      <div className='bg-[#ffe4e8] bg-opacity-[55%] bg-transparent shadow-lg rounded-full'>
+      <div className='bg-[#f1c3c9] backdrop-blur-md py-8 bg-transparent shadow-[rgba(0.2,0.2,0,0.2)_10px_10px_10px_10px] rounded-full'>
 
           <h1 className='text-6xl font-bold text-[#411d2c] py-10'>StopWatch</h1>
           <div className='text-5xl font-bold text-[#774048]'>{formatTime()}</div>
@@ -83,3 +88,4 @@ function StopWatch() {
 }
 
 export default StopWatch;
+

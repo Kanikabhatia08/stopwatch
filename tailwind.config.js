@@ -4,6 +4,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundOpacity: ['active'],
+      backgroundImage: {
+        'hero': "url('./images/clock.jpg')",
+      }
     },
   },
   plugins: [],
